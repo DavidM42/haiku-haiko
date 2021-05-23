@@ -156,7 +156,7 @@
 			}
 			@media only screen and (max-width: 768px) {
 				// on mobile
-				width: 65%;
+				width: 60%;
 			}
 		}
 
