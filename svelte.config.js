@@ -1,4 +1,5 @@
 import preprocess from 'svelte-preprocess';
+import node from '@sveltejs/adapter-node';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,7 +12,7 @@ const config = {
 		target: '#svelte',
 
 		// default node adapter to use in heroku
-		adapter: adapter({
+		adapter: node({
 			// default options are shown
 			out: 'build'
 		})

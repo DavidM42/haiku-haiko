@@ -1,5 +1,5 @@
-import { hyphenate as hyphenateEn } from 'hyphen/en';
-import { hyphenate as hyphenateDe } from 'hyphen/de';
+// import { hyphenate as hyphenateEn } from 'hyphen/en/index.js';
+import { hyphenate as hyphenateDe } from 'hyphen/de/index.js';
 
 const seperator = '%';
 
