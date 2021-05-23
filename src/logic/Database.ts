@@ -71,6 +71,24 @@ export class Database {
         return await this.connection.manager.save(newHaiku);
     }
 
+    /**
+     * Get newest or oldest haikus
+     * @param limit Limit of Haikus wanted
+     * @param order Order or request if newest first or oldest first
+     */
+    public async getHaikusByDate(limit = 50, order: 'DESC' | 'ASC' = 'DESC'): Promise<Array<Haiku>> {
+        await this.ensureConnection();
+
+        const allHaikus = await this.connection.manager.find(Haiku, {
+            order: {
+                createdOn: order 
+            },
+            take: limit
+        });
+        return allHaikus;
+    }
+
 }
 
+export const db = new Database();
 

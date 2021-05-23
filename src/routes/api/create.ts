@@ -3,9 +3,8 @@
 // hCaptcha to secure haiku creation and report button
 // https://docs.hcaptcha.com/#add-the-hcaptcha-widget-to-your-webpage
 
-import { Database } from '../../logic/Database';
+import { db } from '../../logic/Database';
 
-const db = new Database();
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+
 	import { countSyllables } from './../../logic/hyphenation';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
@@ -11,9 +13,19 @@
 	let countLineTwo: number = 0;
 	let countLineThree: number = 0;
 
-	let alertMessage: string;
+	export let alertMessage: string;
+
+	const zeroAll = () => {
+		lineOne = '';
+		lineTwo = '';
+		lineThree = '';
+		countLineOne = 0;
+		countLineTwo = 0;
+		countLineThree = 0;
+	};
 
 	const lineChange = async (event) => {
+		alertMessage = '';
 		const count = await countSyllables(event.target.value);
 		switch (event.target.id) {
 			case 'lineOne':
@@ -50,12 +62,13 @@
 			lineTwo: lineTwo,
 			lineThree: lineThree
 		});
+		zeroAll();
 	};
 </script>
 
 <div id="form">
 	{#if !!alertMessage}
-		<div class="alert">
+		<div class="alert" in:fade out:fade>
 			{alertMessage}
 		</div>
 	{/if}
@@ -83,14 +96,16 @@
 	#form {
 		display: flex;
 		flex-direction: column;
-		min-width: 700px;
+		// only works on desktop
+		// min-width: 700px;
+		min-width: 60vw;
 	}
 
 	.alert {
 		width: 100%;
 		font-size: 1.2em;
 		background-color: $color-accent-text-bg;
-		color: $wrong-text-color;
+		color: $color-accent-text;
 		margin-bottom: 20px;
 		padding: 20px;
 	}
@@ -113,9 +128,16 @@
 
 	.five {
 		& > input {
-			width: 45%;
+			@media only screen and (min-width: 768px) {
+				// on desktop
+				width: 100%;
+				max-width: 250px;
+			}
+			@media only screen and (max-width: 768px) {
+				// on mobile
+				width: 45%;
+			}
 		}
-
 		& > .syllable-nr.is {
 			color: $wrong-text-color;
 
@@ -127,7 +149,15 @@
 
 	.seven {
 		& > input {
-			width: 75%;
+			@media only screen and (min-width: 768px) {
+				// on desktop
+				width: 100%;
+				max-width: 459px;
+			}
+			@media only screen and (max-width: 768px) {
+				// on mobile
+				width: 65%;
+			}
 		}
 
 		& > .syllable-nr.is {
@@ -140,6 +170,11 @@
 	}
 
 	input {
+		@media only screen and (min-width: 768px) {
+			// bigger font on desktop
+			font-size: 1.15em;
+		}
+
 		background-color: $color-accent-text-bg;
 		color: $color-accent-text;
 
@@ -148,8 +183,14 @@
 		margin: 5px 0px;
 		padding: 10px;
 
+		&:hover {
+			background-color: darken($color-accent-text-bg, 10);
+		}
+
 		&:focus-visible {
-			border-radius: 0px;
+			// firefox you suck sometimes
+			-moz-outline-radius: 0px;
+			outline-style: solid;
 		}
 	}
 
@@ -160,5 +201,10 @@
 		font-size: 1.5em;
 		color: $color-accent-text;
 		background-color: $color-accent-text-bg;
-}
+		border: 2px solid $color-accent-text;
+
+		&:hover {
+			background-color: darken($color-accent-text-bg, 10);
+		}
+	}
 </style>

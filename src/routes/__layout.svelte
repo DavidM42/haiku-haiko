@@ -10,7 +10,7 @@
 </main>
 
 <footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<p>Ein Produkt der <a target="_blank" href="https://merz.dev/">Merzlabs</a> Softwareschmiede</p>
 </footer>
 
 <style lang="scss">
