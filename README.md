@@ -36,3 +36,14 @@ npm run build
 ```
 
 > You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+
+## Heroku deployment
+
+Had problems I could solve thanks to [this blog](https://bight.dev/log/deploying-a-sveltekit-application-to-heroku/).
+Basically had to execute
+
+```shell
+heroku config:set NPM_CONFIG_PRODUCTION=false
+```
+
+and add the ProcFile included in this repo.
