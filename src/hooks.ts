@@ -1,6 +1,10 @@
+import "reflect-metadata";
 import cookie from 'cookie';
 import { v4 as uuid } from '@lukeed/uuid';
 import type { Handle } from '@sveltejs/kit';
+
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 export const handle: Handle = async ({ request, render }) => {
 	const cookies = cookie.parse(request.headers.cookie || '');
