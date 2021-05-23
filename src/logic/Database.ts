@@ -5,7 +5,7 @@ import { Connection, createConnection } from "typeorm";
 
 import { Haiku } from "../models/haiku";
 
-const environmentPostgresUrl = process.env['HEROKU_POSTGRESQL'];
+const environmentPostgresUrl = process.env['DATABASE_URL'];
 
 const databaseBaseConfig = {
     type: "postgres",
