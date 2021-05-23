@@ -12,6 +12,8 @@
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.0.0-next.22",
     "@sveltejs/kit": "next",
+    "@types/geojson": "^7946.0.7",
+    "@types/node": "^15.6.0",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.22.0",
@@ -23,14 +25,21 @@
     "svelte": "^3.34.0",
     "svelte-preprocess": "^4.7.3",
     "tslib": "^2.0.0",
+    "typeorm": "^0.2.32",
     "typescript": "^4.0.0"
   },
   "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.2.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@lukeed/uuid": "^2.0.0",
     "cookie": "^0.4.1",
+    "dotenv": "^10.0.0",
+    "geojson": "^0.5.0",
     "hyphen": "^1.6.4",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "svelte-fa": "^2.2.0",
     "thesaurus": "0.0.1",
     "thesaurus-ts": "git+https://github.com/DavidM42/thesaurus-ts.git"
   }
