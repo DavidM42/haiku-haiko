@@ -10,7 +10,7 @@
     "start": "npm run build & node build"
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.22",
+    "@sveltejs/adapter-auto": "^1.0.0-next.22",
     "@sveltejs/kit": "1.0.0-next.109",
     "@types/geojson": "^7946.0.7",
     "@types/node": "^15.6.0",
