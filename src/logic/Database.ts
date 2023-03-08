@@ -21,11 +21,11 @@ const databaseBaseConfig = {
     // security meh use ssl but accept every cert
     // just to get it to work for now
     ssl:  !isLocalHostConnection(),
-    // extra: isLocalHostConnection() ? {} :   {
-    //     ssl: {
-    //         rejectUnauthorized: false
-    //     }
-    // }
+    extra: isLocalHostConnection() ? {} :   {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
 };
 
 
