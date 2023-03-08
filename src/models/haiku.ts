@@ -8,7 +8,7 @@ import type { Geometry, Point } from 'geojson';
 //     coordinates: [0, 0]
 // };
 
-@Entity({ name: 'haiko_haiku'})
+@Entity({ name: 'haiku_haiko'})
 export class Haiku {
     @PrimaryGeneratedColumn('uuid')
     id: number;
@@ -23,16 +23,18 @@ export class Haiku {
     @Column('varchar')
     lineThree: string;
 
-    @Index({ spatial: true })
-    @Column({
-        type: 'geography',
-        spatialFeatureType: 'Point', 
-        nullable: true,
-    })
-    location: Point
+    // TODO mysql used by planetscale does not support this only postgres with postgis
+    // was not implemented yet anyways but later would be cool
+    // @Index({ spatial: true })
+    // @Column({
+    //     type: 'geography',
+    //     spatialFeatureType: 'Point', 
+    //     nullable: true,
+    // })
+    // location: Point
 
     @Column({
-        type: 'int4',
+        type: 'integer',
         default: 0
     })
     reportCount: number;

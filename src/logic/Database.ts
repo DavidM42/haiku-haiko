@@ -5,10 +5,14 @@ import { Connection, createConnection } from "typeorm";
 
 import { Haiku } from "../models/haiku";
 
-const environmentPostgresUrl = process.env['DATABASE_URL'];
+const environmentSQLServerUrl = process.env['DATABASE_URL'];
+
+function isLocalHostConnection() {
+    return process.env["DB_HOST"] === "localhost" || process.env["DB_HOST"] === '127.0.0.1';
+}
 
 const databaseBaseConfig = {
-    type: "postgres",
+    type: "mysql",
     entities: [
         Haiku
     ],
@@ -16,12 +20,12 @@ const databaseBaseConfig = {
     logging: false,
     // security meh use ssl but accept every cert
     // just to get it to work for now
-    ssl: true,
-    extra: {
-        ssl: {
-            rejectUnauthorized: false
-        }
-    }
+    ssl:  !isLocalHostConnection(),
+    // extra: isLocalHostConnection() ? {} :   {
+    //     ssl: {
+    //         rejectUnauthorized: false
+    //     }
+    // }
 };
 
 
@@ -30,8 +34,8 @@ export class Database {
 
     private async connect(): Promise<Connection> {
         let databaseConfig = databaseBaseConfig;
-        if (environmentPostgresUrl) {
-            databaseConfig['url'] = environmentPostgresUrl;
+        if (environmentSQLServerUrl) {
+            databaseConfig['url'] = environmentSQLServerUrl;
         } else {
             const additionalConfig = {
                 host: process.env['DB_HOST'],
