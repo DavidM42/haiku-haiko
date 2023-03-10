@@ -1,4 +1,5 @@
 import preprocess from 'svelte-preprocess';
+// Auto adapter has problems in this old version with Vercel
 // import adapter from '@sveltejs/adapter-auto';
 import adapter from '@sveltejs/adapter-vercel';
 
@@ -13,11 +14,6 @@ const config = {
 		target: '#svelte',
 
 		adapter: adapter()
-		// default node adapter to use in heroku
-		// adapter: node({
-		// 	// default options are shown
-		// 	out: 'build'
-		// })
 	}
 };
 
