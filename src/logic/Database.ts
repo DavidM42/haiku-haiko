@@ -92,6 +92,11 @@ export class Database {
         return allHaikus;
     }
 
+    public async removeHaiku(haiku: Haiku): Promise<Haiku> {
+        await this.ensureConnection();
+        return await this.connection.manager.remove(haiku);
+    }
+
 }
 
 export const db = new Database();
